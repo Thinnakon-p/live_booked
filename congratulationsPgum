@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ขอแสดงความยินดี! (Black & Gold)</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Google Font: Prompt (ภาษาไทย) -->
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* กำหนดฟอนต์ Prompt เป็นฟอนต์หลัก และธีมสีดำ */
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #1a1a1a; /* Dark background */
+        }
+        /* CSS สำหรับเอฟเฟกต์ "Falling Stars" หรือประกายดาว */
+        @keyframes star-fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
+        }
+        .falling-star {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background-color: var(--color);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.8;
+            box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); /* เพิ่มแสงเรืองๆ */
+            animation: star-fall var(--duration) linear infinite;
+        }
+        /* สไตล์สำหรับ Image Card ในธีมสีดำ/ทอง */
+        .image-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #333; /* ขอบมืด */
+            background-color: #262626; /* พื้นหลังการ์ดมืดกว่าเล็กน้อย */
+        }
+        .image-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.5); /* เงาสีทอง */
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased text-gray-200">
+
+    <!-- ส่วนของเสียงเพลง (Audio Player) -->
+    <audio id="background-music" loop autoplay style="display: none;">
+        <!-- ** ให้คุณเพิ่มลิงก์ไฟล์เพลงของคุณที่นี่ (เช่น src="/path/to/your/music.mp3") ** -->
+        <source src="" type="audio/mpeg">
+        เบราว์เซอร์ของคุณไม่รองรับการเล่นเสียง
+    </audio>
+
+    <!-- ส่วนหัวและข้อความแสดงความยินดี -->
+    <header class="py-12 md:py-20 bg-gray-900 text-white shadow-2xl relative overflow-hidden border-b border-yellow-400/50">
+        <div class="container mx-auto px-6 text-center z-10 relative">
+            <p class="text-xl md:text-2xl font-light mb-2 text-yellow-400 animate-pulse">จากใจทุกคน...</p>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-wider mb-4 drop-shadow-lg text-white">
+                <span class="text-yellow-400">ขอแสดงความยินดี</span>อย่างยิ่ง!
+            </h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto opacity-70">
+                สำหรับความสำเร็จอันยิ่งใหญ่นี้ เราภูมิใจในตัวคุณมากและขอเฉลิมฉลองให้กับคุณ
+            </p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12 md:py-16">
+
+        <!-- ส่วนแสดงรูปภาพ (Photo Gallery) -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-8 text-center inline-block pb-1 border-b-4 border-yellow-400/80 text-white">
+                ช่วงเวลาที่น่าจดจำ
+            </h2>
+            
+            <!-- Grid Layout สำหรับ 4-5 รูป (Responsive) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                
+                <!-- รูปภาพที่ 1 -->
+                <div class="image-card rounded-xl shadow-xl overflow-hidden">
+                    <img class="w-full h-56 object-cover" 
+                         src="https://placehold.co/800x600/3d3d3d/ffd700?text=Moment+1" 
+                         alt="[attachment_0](attachment)"
+                         onerror="this.onerror=null;this.src='https://placehold.co/800x600/3d3d3d/ffd700?text=รูปภาพ+1'">
+                    <div class="p-4 text-center">
+                        <p class="text-lg font-semibold text-yellow-400">จุดเริ่มต้น</p>
+                    </div>
+                </div>
+
+                <!-- รูปภาพที่ 2 -->
+                <div class="image-card rounded-xl shadow-xl overflow-hidden">
+                    <img class="w-full h-56 object-cover" 
+                         src="https://placehold.co/800x600/3d3d3d/ffd700?text=Moment+2" 
+                         alt="[attachment_1](attachment)"
+                         onerror="this.onerror=null;this.src='https://placehold.co/800x600/3d3d3d/ffd700?text=รูปภาพ+2'">
+                    <div class="p-4 text-center">
+                        <p class="text-lg font-semibold text-yellow-400">ระหว่างทาง</p>
+                    </div>
+                </div>
+
+                <!-- รูปภาพที่ 3 -->
+                <div class="image-card rounded-xl shadow-xl overflow-hidden">
+                    <img class="w-full h-56 object-cover" 
+                         src="https://placehold.co/800x600/3d3d3d/ffd700?text=Moment+3" 
+                         alt=""
+                         onerror="this.onerror=null;this.src='https://placehold.co/800x600/3d3d3d/ffd700?text=รูปภาพ+3'">
+                    <div class="p-4 text-center">
+                        <p class="text-lg font-semibold text-yellow-400">ก้าวสำคัญ</p>
+                    </div>
+                </div>
+
+                <!-- รูปภาพที่ 4 -->
+                <div class="image-card rounded-xl shadow-xl overflow-hidden">
+                    <img class="w-full h-56 object-cover" 
+                         src="https://placehold.co/800x600/3d3d3d/ffd700?text=Moment+4" 
+                         alt=""
+                         onerror="this.onerror=null;this.src='https://placehold.co/800x600/3d3d3d/ffd700?text=รูปภาพ+4'">
+                    <div class="p-4 text-center">
+                        <p class="text-lg font-semibold text-yellow-400">วันที่ภาคภูมิใจ</p>
+                    </div>
+                </div>
+
+                <!-- รูปภาพที่ 5 (ทางเลือก) -->
+                <div class="image-card rounded-xl shadow-xl overflow-hidden lg:col-span-1 md:col-span-2">
+                    <img class="w-full h-56 object-cover" 
+                         src="https://placehold.co/800x600/3d3d3d/ffd700?text=Moment+5" 
+                         alt="[attachment_2](attachment)"
+                         onerror="this.onerror=null;this.src='https://placehold.co/800x600/3d3d3d/ffd700?text=รูปภาพ+5'">
+                    <div class="p-4 text-center">
+                        <p class="text-lg font-semibold text-yellow-400">ภาพความประทับใจ</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ส่วนคำอธิบายหรือเล่าเรื่อง (Storytelling/Description) -->
+        <section class="mt-16 bg-gray-800 p-6 md:p-10 rounded-2xl shadow-2xl border-t-4 border-yellow-400/80">
+            <h2 class="text-3xl font-bold text-white mb-6 border-b border-gray-600 pb-2">
+                เรื่องราวแห่งความสำเร็จ
+            </h2>
+            <div class="prose max-w-none text-gray-300 leading-relaxed text-base md:text-lg">
+                <p class="mb-4">
+                    นี่คือส่วนสำหรับคำอธิบายหรือเรื่องราว การปรับธีมให้เป็นสีดำและทอง/ขาวช่วยเพิ่มความหรูหรา 
+                    และให้ความรู้สึกถึงการเฉลิมฉลองที่ยิ่งใหญ่และมีระดับ ความสำเร็จนี้ควรค่าแก่การบันทึกไว้ในความทรงจำ
+                </p>
+                <p class="mb-4">
+                    เส้นทางที่ผ่านมาเต็มไปด้วยความท้าทาย แต่ความมุ่งมั่นของคุณเป็นเหมือนประกายทองที่นำทางไปสู่จุดหมาย
+                    เราขอแสดงความชื่นชมและยกย่องในความพยายามทุกอย่างที่คุณได้ทำมาทั้งหมด
+                </p>
+                <p class="text-right mt-6 font-semibold text-yellow-400">
+                    — คำอวยพรจากเพื่อนและคนรัก
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-12 py-6 bg-gray-950 text-white text-center border-t border-yellow-400/30">
+        <p class="text-sm opacity-60">
+            Designed with Elegance | Black & Gold Congratulatory Webpage
+        </p>
+    </footer>
+
+    <!-- JavaScript สำหรับ Falling Stars Animation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const starContainer = document.createElement('div');
+            document.body.appendChild(starContainer);
+            
+            // ใช้สีขาวและสีทองสำหรับประกายดาว
+            const colors = ['#ffffff', '#fdfd96', '#ffd700', '#eee']; 
+            const numStars = 70; // เพิ่มจำนวนอนุภาคเล็กน้อย
+
+            function createFallingStars() {
+                for (let i = 0; i < numStars; i++) {
+                    const star = document.createElement('div');
+                    star.classList.add('falling-star');
+                    
+                    // สุ่มตำแหน่งเริ่มต้น (x-axis)
+                    star.style.left = `${Math.random() * 100}vw`; 
+                    // สุ่มสี (ขาวหรือทอง)
+                    star.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
+                    // สุ่มระยะเวลาการร่วง (ช้าลงและสง่างามขึ้น)
+                    star.style.setProperty('--duration', `${(Math.random() * 5) + 8}s`); 
+                    // สุ่มขนาด
+                    star.style.width = `${Math.random() * 2 + 2}px`;
+                    star.style.height = star.style.width;
+                    // สุ่มดีเลย์เพื่อให้การร่วงต่อเนื่อง
+                    star.style.animationDelay = `-${Math.random() * 10}s`;
+
+                    starContainer.appendChild(star);
+
+                    // ลบ star หลังจบการร่วง (ป้องกัน DOM รก)
+                    setTimeout(() => star.remove(), 15000); 
+                }
+            }
+            
+            // สร้างดาวชุดแรกเมื่อโหลดหน้าเว็บ
+            createFallingStars(); 
+            // สร้างดาวใหม่ทุกๆ 5 วินาที เพื่อให้มีเอฟเฟกต์ต่อเนื่อง
+            setInterval(createFallingStars, 5000); 
+
+
+            // จัดการเรื่องการเล่นเพลงอัตโนมัติ (Autoplay)
+            const music = document.getElementById('background-music');
+            if (music.hasAttribute('autoplay')) {
+                music.play().catch(error => {
+                    console.log("Autoplay was prevented. User needs to interact with the page to start music.");
+                });
+            }
+        });
+    </script>
+</body>
+</html>
